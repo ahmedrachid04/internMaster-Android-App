@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Barre de navigation avec icône Home, centrée en haut -->
+    <ImageView
+        android:id="@+id/homeIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_home"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="Home"
+        android:tint="#808080" />
+
+    <!-- Conteneur centré pour le texte et les boutons -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_marginTop="100dp" >
+
+        <!-- Texte "Vous êtes:", centré horizontalement -->
+        <TextView
+            android:id="@+id/youAreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vous êtes :"
+            android:textSize="35sp"
+            android:textColor="#002E87"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp" /> <!-- Réduit la marge sous le texte -->
+
+        <!-- Bouton Entreprise -->
+        <Button
+            android:id="@+id/entrepriseButton"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:backgroundTint="#002E87"
+            android:text="Entreprise"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Texte "Ou" -->
+        <TextView
+            android:id="@+id/ouText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ou"
+            android:textSize="35sp"
+            android:textColor="#002E87"
+            android:textAlignment="center"
+            android:layout_marginBottom="5dp" />
+
+        <!-- Bouton Stagiaire -->
+        <Button
+            android:id="@+id/stagiaireButton"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:backgroundTint="#B3C7F0"
+            android:text="Stagiaire"
+            android:textColor="#002E87"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+</RelativeLayout>

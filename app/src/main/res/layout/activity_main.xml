@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo_intern"
+        android:contentDescription="Logo InternMaster"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp" /> <!-- Marges ajustées -->
+
+    <!-- Conteneur pour texte et boutons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="-50dp"> <!-- Déplacement vers le haut -->
+
+        <!-- Titre -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="InternMaster"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textColor="#002E87"
+            android:layout_marginTop="0dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Slogan -->
+        <TextView
+            android:id="@+id/sloganText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Votre chemin vers le Succès Professionnel"
+            android:textSize="22sp"
+            android:textColor="#555555"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center" />
+
+        <!-- Bouton de Connexion -->
+        <Button
+            android:id="@+id/btnConnection"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:backgroundTint="#002E87"
+            android:text="Connection"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center_horizontal" />
+
+        <!-- Bouton d'Inscription -->
+        <Button
+            android:id="@+id/btnInscription"
+            android:layout_width="280dp"
+            android:layout_height="60dp"
+            android:backgroundTint="#B3C7F0"
+            android:text="Inscription"
+            android:textColor="#002E87"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

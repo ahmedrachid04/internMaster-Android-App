@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connectez-vous en tant que stagiaire :"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingBottom="30dp"
+        android:paddingTop="1dp" />
+
+
+
+    <TextView
+        android:id="@+id/textViewFirstN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextFirstN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom" />
+
+    <TextView
+        android:id="@+id/textViewLastN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prénom : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextLastN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prénom" />
+
+    <TextView
+        android:id="@+id/textViewSchooll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="École : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextSchooll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="École" />
+
+    <TextView
+        android:id="@+id/textViewSpecialtyy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spécialité : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextSpecialtyy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Spécialité" />
+
+    <TextView
+        android:id="@+id/textViewPhoneEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Numéro Téléphone : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextPhoneEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Numéro Téléphone"
+        android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/textViewEmailEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextEmailEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/textViewProfilee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profil : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <Button
+        android:id="@+id/buttonUploadProfilee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Importer un fichier"
+        android:backgroundTint="#D9D9D9" />
+
+    <TextView
+        android:id="@+id/textViewPasswordEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mot de passe : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextPasswordEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mot de passe"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textViewCPasswordEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmer Mot de passe : *"
+        android:textSize="18sp"
+        android:textColor="#004AC5"
+        android:paddingTop="8dp" />
+
+    <EditText
+        android:id="@+id/editTextConfirmPasswordEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirmer Mot de passe"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/buttonConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continuer"
+        android:layout_marginLeft="350px"
+        android:backgroundTint="#003A9B"
+        android:layout_marginTop="16dp" />
+    </LinearLayout>
+
+
+
+</ScrollView>
