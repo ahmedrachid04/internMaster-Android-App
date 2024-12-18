@@ -5,6 +5,18 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@android:color/white">
+    <!-- Bouton Menu en haut à droite -->
+    <ImageButton
+        android:id="@+id/menu_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="320dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_menu"
+        android:contentDescription="Menu Button" />
 
     <!-- CardView pour le logo et le titre -->
     <androidx.cardview.widget.CardView
@@ -34,8 +46,8 @@
                 android:layout_toEndOf="@id/logo"
                 android:layout_marginStart="16dp"
                 android:text="NOM ENTREPRISE"
+                android:textColor="@color/border_color"
                 android:textSize="24sp"
-                android:textColor="@android:color/black"
                 android:layout_centerVertical="true" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
@@ -59,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="Description de l’entreprise"
                 android:textSize="18sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@color/Light_blue"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nous Offrons des Stages en"
                 android:textSize="18sp"
-                android:textColor="@android:color/black"/>
+                android:textColor="@color/Light_blue"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -132,20 +144,8 @@
                 android:textColor="@android:color/black"
                 android:layout_marginTop="8dp"/>
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                card_view:srcCompat="@drawable/entreprise" />
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Bouton Menu --><!--hada lfo9-->
-    <ImageButton
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="end|bottom"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/ic_menu"
-        android:contentDescription="Menu Button"/>
 </LinearLayout>

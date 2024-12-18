@@ -8,17 +8,29 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class InscriptionEntrepriseActivity extends AppCompatActivity {
+    EditText editTextNom;
+    EditText editTextAdresse;
+    EditText editTextEmail;
+    EditText editTextTelephone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscriptionentreprise);
+
+        editTextNom = findViewById(R.id.editTextCompanyName);
+        editTextAdresse = findViewById(R.id.editTextAddress);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextTelephone = findViewById(R.id.editTextPhone);
+
+
 
         // TextView avec des étoiles
         TextView companyTextView = findViewById(R.id.textViewCompany);
@@ -49,8 +61,21 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
         buttonContinuer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Récupérer le texte saisi
+                String userTextNom = editTextNom.getText().toString();
+                String userTextEmail = editTextEmail.getText().toString();
+                String userTextTelephone = editTextTelephone.getText().toString();
+                String userTextAdresse = editTextAdresse.getText().toString();
+
                 // Créer un Intent pour lancer l'Activity PopupEntreprise
                 Intent intent = new Intent(InscriptionEntrepriseActivity.this, ConfirmerEntrepriseActivity.class);
+
+                // Envoyer le texte
+                intent.putExtra("TEXT_KEY_Nom", userTextNom);
+                intent.putExtra("TEXT_KEY_Email", userTextEmail);
+                intent.putExtra("TEXT_KEY_Telephone", userTextTelephone);
+                intent.putExtra("TEXT_KEY_Adresse", userTextAdresse);
+
                 startActivity(intent);
             }
         });

@@ -22,17 +22,11 @@
             android:src="@drawable/profil"
             android:scaleType="centerCrop" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/profil" />
-
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textView"
-        style="SubtitleTextStyle"
+        style="@style/TitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -44,7 +38,7 @@
         android:id="@+id/close_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/baseline_close"
+        android:src="@drawable/ic_close"
         android:layout_marginTop="1dp"
         android:layout_marginRight="10dp"
         app:layout_constraintBottom_toBottomOf="@id/cardViewSt"
@@ -59,13 +53,13 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@+id/cardViewSt"
         app:layout_constraintTop_toBottomOf="@+id/cardViewSt"
-        style="SubtitleTextStyle"/>
+        style="@style/TitleTextStyle"/>
 
     <TextView
         android:id="@+id/popup_emailEnt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="nom stagiaire"
+        android:text=" "
         android:layout_marginLeft="80dp"
         app:layout_constraintBottom_toBottomOf="@+id/popup_email"
         app:layout_constraintStart_toEndOf="@+id/popup_email"
@@ -73,7 +67,7 @@
     <!--popupPrenom-->
     <TextView
         android:id="@+id/popup_tele"
-        style="SubtitleTextStyle"
+        style="@style/TitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Prénom :"
@@ -86,14 +80,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
-        android:text="prénom stagiaire"
+        android:text=" "
         app:layout_constraintBottom_toBottomOf="@+id/popup_tele"
         app:layout_constraintStart_toStartOf="@+id/popup_emailEnt"
         app:layout_constraintTop_toBottomOf="@+id/popup_emailEnt" />
     <!--popupEcole-->
     <TextView
         android:id="@+id/popup_ecoleSt"
-        style="SubtitleTextStyle"
+        style="@style/TitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ecole :"
@@ -106,14 +100,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
-        android:text="école stagiaire"
+        android:text=" "
         app:layout_constraintStart_toStartOf="@+id/popup_teleEnt"
         app:layout_constraintTop_toBottomOf="@+id/popup_teleEnt" />
+
 
     <!--popupSpecialite-->
     <TextView
         android:id="@+id/popup_specialitéSt"
-        style="SubtitleTextStyle"
+        style="@style/TitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="110dp"
@@ -123,9 +118,23 @@
         app:layout_constraintTop_toBottomOf="@+id/popup_ecoleSt" />
 
     <!--popupTele-->
+
+    <TextView
+        android:id="@+id/popup_specialiteS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/popup_specialitéSt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintStart_toEndOf="@+id/popup_specialitéSt"
+        app:layout_constraintTop_toBottomOf="@+id/popup_adresseEnt"
+        app:layout_constraintVertical_bias="0.566" />
+
     <TextView
         android:id="@+id/popup_teleSt"
-        style="SubtitleTextStyle"
+        style="@style/TitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Téléphone :"
@@ -133,10 +142,21 @@
         app:layout_constraintStart_toStartOf="@+id/popup_specialitéSt"
         app:layout_constraintTop_toBottomOf="@+id/popup_specialitéSt" />
 
+    <TextView
+        android:id="@+id/popup_teleS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="@+id/popup_teleSt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/popup_teleSt"
+        app:layout_constraintTop_toBottomOf="@+id/popup_specialiteS" />
+
     <!--popupEmail-->
     <TextView
         android:id="@+id/popup_emailSt"
-        style="SubtitleTextStyle"
+        style="@style/TitleTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email :"
@@ -145,13 +165,23 @@
         app:layout_constraintStart_toStartOf="@+id/popup_teleSt"
         app:layout_constraintTop_toBottomOf="@+id/popup_teleSt" />
 
+    <TextView
+        android:id="@+id/popup_emailS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        app:layout_constraintBottom_toBottomOf="@+id/popup_emailSt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/popup_emailSt"
+        app:layout_constraintTop_toBottomOf="@+id/popup_teleS" />
+
 
     <Button
         android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:backgroundTint="#003A9B"
+        android:backgroundTint="@color/Dark_blue"
         android:text="modifier"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -165,7 +195,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="70dp"
         android:layout_marginTop="190dp"
-        android:backgroundTint="#003A9B"
+        android:backgroundTint="@color/Dark_blue"
         android:text="confirmer"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

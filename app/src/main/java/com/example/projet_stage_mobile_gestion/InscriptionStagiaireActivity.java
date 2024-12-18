@@ -6,16 +6,36 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class InscriptionStagiaireActivity extends AppCompatActivity {
+
+    EditText editTextNom; // Pour la saisie du
+    EditText editTextPrenom;
+    EditText editTextEcole;
+    EditText editTextSpecialite;
+    EditText editTextEmail;
+    EditText editTextTelephone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inscriptionstagiaire);
+
+        editTextNom = findViewById(R.id.editTextFirstN);
+        editTextPrenom = findViewById(R.id.editTextLastN);
+        editTextEcole = findViewById(R.id.editTextSchooll);
+        editTextSpecialite = findViewById(R.id.editTextSpecialtyy);
+        editTextEmail = findViewById(R.id.editTextEmailEt);
+        editTextTelephone = findViewById(R.id.editTextPhoneEt);
 
         TextView firstNameTextView = findViewById(R.id.textViewFirstN);
         TextView lastNameTextView = findViewById(R.id.textViewLastN);
@@ -27,22 +47,44 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
         TextView passwordTextView = findViewById(R.id.textViewPasswordEt);
         TextView confirmPasswordTextView = findViewById(R.id.textViewCPasswordEt);
 
-        firstNameTextView.setText(getColoredText("Nom : ", "", Color.RED));
-        lastNameTextView.setText(getColoredText("Prénom : ", "", Color.RED));
-        schoolTextView.setText(getColoredText("École : ", "", Color.RED));
-        specialtyTextView.setText(getColoredText("Spécialité : ", "", Color.RED));
-        phoneTextView.setText(getColoredText("Numéro Téléphone  : ", "", Color.RED));
-        emailTextView.setText(getColoredText("Email : ", "", Color.RED));
-        profileTextView.setText(getColoredText("Profil : ", "", Color.RED));
-        passwordTextView.setText(getColoredText("Mot de passe : ", "", Color.RED));
-        confirmPasswordTextView.setText(getColoredText("Confirmer Mot de passe : ", "", Color.RED));
+        firstNameTextView.setText(getColoredText("Nom : *", "*", Color.RED));
+        lastNameTextView.setText(getColoredText("Prénom : *", "*", Color.RED));
+        schoolTextView.setText(getColoredText("École : *", "*", Color.RED));
+        specialtyTextView.setText(getColoredText("Spécialité : *", "*", Color.RED));
+        phoneTextView.setText(getColoredText("Numéro Téléphone  : *", "*", Color.RED));
+        emailTextView.setText(getColoredText("Email : *", "*", Color.RED));
+        profileTextView.setText(getColoredText("Profil : *", "*", Color.RED));
+        passwordTextView.setText(getColoredText("Mot de passe : *", "*", Color.RED));
+        confirmPasswordTextView.setText(getColoredText("Confirmer Mot de passe : *", "*", Color.RED));
 
-        // Bouton de confirmation
-        Button confirmButton = findViewById(R.id.buttonConfirm);
-        confirmButton.setOnClickListener(v -> {
-            // Intent pour naviguer vers ConfirmerStagiaireActivity
-            Intent intent = new Intent(InscriptionStagiaireActivity.this, ConfirmerStagiaireActivity.class);
-            startActivity(intent);
+        // Lier le bouton "Continuer" avec son ID
+        Button buttonContinuer = findViewById(R.id.buttonSubmit);
+
+        // Ajouter un OnClickListener pour naviguer vers PopupStagiaire
+        buttonContinuer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Récupérer le texte saisi
+                String userTextNom = editTextNom.getText().toString();
+                String userTextPrenom = editTextPrenom.getText().toString();
+                String userTextEcole = editTextEcole.getText().toString();
+                String userTextSpecialite = editTextSpecialite.getText().toString();
+                String userTextEmail = editTextEmail.getText().toString();
+                String userTextTelephone = editTextTelephone.getText().toString();
+
+
+                // Créer un Intent pour lancer l'Activity PopupEntreprise
+                Intent intent = new Intent(InscriptionStagiaireActivity.this, ConfirmerStagiaireActivity.class );
+
+                // Envoyer le texte
+                intent.putExtra("TEXT_KEY_Nom", userTextNom);
+                intent.putExtra("TEXT_KEY_Prenom", userTextPrenom);
+                intent.putExtra("TEXT_KEY_Ecole", userTextEcole);
+                intent.putExtra("TEXT_KEY_Specialite", userTextSpecialite);
+                intent.putExtra("TEXT_KEY_Email", userTextEmail);
+                intent.putExtra("TEXT_KEY_Telephone", userTextTelephone);
+                startActivity(intent);
+            }
         });
     }
 

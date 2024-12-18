@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Projet_stage_mobile_gestion</string>
+    <string name="titleE">Connectez-vous en tant qu’entreprise :</string>
+
+
+    <!--Fenetre de Popup de details-->
+    <string name="popup_nom_entreprise">Nom entreprise</string>
+    <string name="popup_email">Email</string>
+    <string name="popup_télé">Téléphone</string>
+    <string name="popup_adresse">Adresse</string>
+    <string name="popup_logo">Logo</string>
+
+    <!--Connect Stagaire-->
+    <string name="titleS">Connectez-vous en tant que stagiaire :</string>
 </resources>
