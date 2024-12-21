@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:weightSum="4"
+    android:background="#42627D"
+    android:paddingTop="4dp">
+
+    <!-- Name TextView -->
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nom Complet"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF" />
+
+    <!-- View CV TextView -->
+    <TextView
+        android:id="@+id/view_cv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Voir CV"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF" />
+
+    <!-- View Request TextView -->
+    <TextView
+        android:id="@+id/view_request"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Voir Demande"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF" />
+
+    <!-- Profile Icon -->
+    <ImageView
+        android:id="@+id/profile_icon"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:src="@drawable/ic_profile"
+        android:layout_gravity="center" />
+</LinearLayout>
