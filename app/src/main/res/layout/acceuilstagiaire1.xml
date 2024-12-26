@@ -1,0 +1,26 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- ImageView pour afficher le profil de l'utilisateur -->
+    <ImageView
+        android:id="@+id/imageView_profil"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_profile"
+        android:contentDescription="@string/profile_image_desc"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- RecyclerView pour afficher la liste des offres -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_offres"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/imageView_profil"
+        android:padding="10dp" />
+
+</RelativeLayout>

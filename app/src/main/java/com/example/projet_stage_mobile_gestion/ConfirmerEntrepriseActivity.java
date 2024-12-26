@@ -8,6 +8,9 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projet_stage_mobile_gestion.DataBase.Models.CompanyModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
+
 public class ConfirmerEntrepriseActivity extends AppCompatActivity {
 
     // Pour afficher le texte reçu
@@ -21,6 +24,7 @@ public class ConfirmerEntrepriseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.confirmerentreprise);
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
 
         // Initialisation du TextView
         textViewNom = findViewById(R.id.textView);
@@ -58,6 +62,10 @@ public class ConfirmerEntrepriseActivity extends AppCompatActivity {
         buttonConfirmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                CompanyModel newComp=new CompanyModel(receivedTextNom,receivedTextAdresse,receivedTextEmail,receivedTextTelephone,"fax","description",null,"password");
+                helper.addCompany(newComp);
+                System.out.println(newComp);
                 // Créer un Intent pour lancer l'Activity InscriptionEntreprise
                 Intent intent = new Intent(ConfirmerEntrepriseActivity.this, ProfilEntrepriseActivity.class);
                 startActivity(intent);

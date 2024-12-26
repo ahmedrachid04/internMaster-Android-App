@@ -12,4 +12,6 @@
 
     <!--Connect Stagaire-->
     <string name="titleS">Connectez-vous en tant que stagiaire :</string>
+    <string name="profile_image_desc">Photo de profil</string>
+
 </resources>
