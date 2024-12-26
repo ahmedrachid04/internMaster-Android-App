@@ -52,6 +52,7 @@
         <activity
             android:name=".ProfilStagiaireActivity"
             android:exported="true" />
+        <activity android:name=".AcceuilStagiaireActivity" android:exported="true" />
     </application>
 
 </manifest>

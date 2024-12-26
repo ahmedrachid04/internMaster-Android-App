@@ -353,6 +353,43 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
 
         return results;
     }
+    //methode pour recuperer les offres avec le nom des entreprises
+    public List<OfferModel> getOffersWithCompanyName() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<OfferModel> results = new ArrayList<>();
+
+        // Requête SQL pour obtenir les offres avec le nom de l'entreprise
+        String query = "SELECT o.*, c.name AS company_name FROM " + OFFER_TABLE + " o " +
+                "JOIN " + COMPANY_TABLE + " c ON o.company_id = c.id;";
+
+        Cursor c = null;
+        try {
+            c = db.rawQuery(query, null);
+
+            while (c.moveToNext()) {
+                int id = c.getInt(c.getColumnIndexOrThrow(ID));
+                String title = c.getString(c.getColumnIndexOrThrow("title"));
+                String description = c.isNull(c.getColumnIndexOrThrow(DESCRIPTION)) ? null : c.getString(c.getColumnIndexOrThrow(DESCRIPTION));
+                Type type = Type.valueOf(c.getString(c.getColumnIndexOrThrow("type")));
+                String domaine = c.getString(c.getColumnIndexOrThrow("domaine"));
+                String duration = c.getString(c.getColumnIndexOrThrow("duration"));
+                Date startDate = new Date(c.getLong(c.getColumnIndexOrThrow("start_date")));
+                Date endDate = new Date(c.getLong(c.getColumnIndexOrThrow("end_date")));
+                Date postDate = new Date(c.getLong(c.getColumnIndexOrThrow("post_date")));
+                long companyId = c.getLong((c.getColumnIndexOrThrow("c."+ID)));
+                String companyName = c.getString(c.getColumnIndexOrThrow("company_name"));  // Récupère le nom de l'entreprise
+
+                OfferModel offer = new OfferModel(title, description, type, domaine, duration, startDate, endDate, postDate, companyId, companyName);
+                results.add(offer);
+            }
+        } finally {
+            if (c != null) c.close();
+            db.close();
+        }
+
+        return results;
+    }
+
 
     public List<ApplicationModel> getApplicationsById(int wantedId) {
         SQLiteDatabase db = this.getReadableDatabase();

@@ -73,7 +73,7 @@ public class ConfirmerStagiaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Créer un Intent pour lancer l'Activity InscriptionEntreprise
-                Intent intent = new Intent(ConfirmerStagiaireActivity.this, ProfilStagiaireActivity.class);
+                Intent intent = new Intent(ConfirmerStagiaireActivity.this, AcceuilStagiaireActivity.class);
                 startActivity(intent);
             }
         });
