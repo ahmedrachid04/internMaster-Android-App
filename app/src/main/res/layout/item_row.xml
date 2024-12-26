@@ -6,7 +6,7 @@
     android:orientation="horizontal"
     android:padding="8dp"
     android:weightSum="4"
-    android:background="#42627D"
+    android:background="#B3C7F0"
     android:paddingTop="4dp">
 
     <!-- Name TextView -->

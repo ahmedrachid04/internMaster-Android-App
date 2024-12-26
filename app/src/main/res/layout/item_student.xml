@@ -1,0 +1,72 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="horizontal"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- Colonne 1 : Nom Prénom -->
+    <TextView
+        android:id="@+id/studentName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nom Prénom"
+        android:textSize="18sp"
+        android:padding="8dp" />
+
+    <!-- Colonne 2 : Spécialité -->
+    <TextView
+        android:id="@+id/studentSpecialty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Spécialité"
+        android:textSize="14sp"
+        android:padding="8dp" />
+
+    <!-- Colonne 3 : École -->
+    <TextView
+        android:id="@+id/studentSchool"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="École"
+        android:textSize="14sp"
+        android:padding="8dp" />
+
+    <!-- Colonne 4 : Boutons -->
+    <LinearLayout
+        android:id="@+id/btnContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <!-- Bouton Modifier -->
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_edit"
+            android:contentDescription="Modifier"
+            android:background="?attr/selectableItemBackground"
+            android:tint="#4CAF50"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Bouton Supprimer -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_delete"
+            android:contentDescription="Supprimer"
+            android:background="?attr/selectableItemBackground"
+            android:tint="#F44336" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,76 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp">
+
+    <!-- Nom de l'entreprise -->
+    <TextView
+        android:id="@+id/tvCompanyName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nom"
+        android:textStyle="bold"
+        android:textColor="#000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvCompanyAddress"
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxWidth="0dp" />
+
+    <!-- Adresse -->
+    <TextView
+        android:id="@+id/tvCompanyAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Adresse"
+        app:layout_constraintStart_toEndOf="@id/tvCompanyName"
+        app:layout_constraintEnd_toStartOf="@id/tvContactEmail"
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxWidth="0dp" />
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/tvContactEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        app:layout_constraintStart_toEndOf="@id/tvCompanyAddress"
+        app:layout_constraintEnd_toStartOf="@id/btnContainer"
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxWidth="0dp" />
+
+    <!-- Conteneur pour les boutons Modifier et Supprimer (colonne 4) -->
+    <LinearLayout
+        android:id="@+id/btnContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/tvContactEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center">
+
+        <!-- Bouton Modifier (vert) -->
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_edit"
+            android:contentDescription="Modifier"
+            android:background="?attr/selectableItemBackground"
+            android:tint="#4CAF50"
+            android:layout_marginEnd="8dp"/>
+
+        <!-- Bouton Supprimer (rouge) -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_delete"
+            android:contentDescription="Supprimer"
+            android:background="?attr/selectableItemBackground"
+            android:tint="#F44336" /> <!-- Couleur rouge -->
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
