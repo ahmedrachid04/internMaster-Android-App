@@ -10,6 +10,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projet_stage_mobile_gestion.DataBase.Models.ApplicationModel;
+import com.example.projet_stage_mobile_gestion.DataBase.Models.Status;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
+
+import java.util.Date;
+
 public class PostulerActivity extends AppCompatActivity {
 
     private static final int PICK_CV_REQUEST_CODE = 1;
@@ -31,6 +37,8 @@ public class PostulerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.postuler);
+        long currentOfferId=getIntent().getLongExtra("OFF_ID",1);
+        long currentStudentId=getIntent().getLongExtra("STUD_ID",1);
 
         // Initialiser les composants de l'interface
         editTextFirstName = findViewById(R.id.editTextFirstName);
@@ -49,7 +57,7 @@ public class PostulerActivity extends AppCompatActivity {
         buttonUploadLetter.setOnClickListener(view -> openFileChooser(PICK_LETTER_REQUEST_CODE));
 
         // Gérer la soumission du formulaire
-        buttonSubmit.setOnClickListener(view -> submitApplication());
+        buttonSubmit.setOnClickListener(view -> submitApplication(currentStudentId, currentOfferId));
     }
 
     // Ouvrir un sélecteur de fichiers
@@ -75,19 +83,22 @@ public class PostulerActivity extends AppCompatActivity {
     }
 
     // Soumettre la candidature
-    private void submitApplication() {
+    private void submitApplication(long studentId, long offerId) {
         String firstName = editTextFirstName.getText().toString().trim();
         String lastName = editTextLastName.getText().toString().trim();
         String school = editTextSchool.getText().toString().trim();
         String filiere = editTextFiliere.getText().toString().trim();
         String offer = editTextOffer.getText().toString().trim();
 
-        if (firstName.isEmpty() || lastName.isEmpty() || school.isEmpty() || filiere.isEmpty() || offer.isEmpty() || cvUri == null || letterUri == null) {
+        if (firstName.isEmpty() || lastName.isEmpty() || school.isEmpty() || filiere.isEmpty() || offer.isEmpty() ) {
             Toast.makeText(this, "Veuillez remplir tous les champs obligatoires.", Toast.LENGTH_SHORT).show();
             return;
         }
 
         // Afficher un message de confirmation (remplacez par l'envoi au backend si nécessaire)
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
+        ApplicationModel app=new ApplicationModel(new Date(), Status.PENDING,null,null,studentId,offerId);
+        helper.addApplication(app);
         Toast.makeText(this, "Candidature soumise avec succès !", Toast.LENGTH_SHORT).show();
 
         // Réinitialiser le formulaire

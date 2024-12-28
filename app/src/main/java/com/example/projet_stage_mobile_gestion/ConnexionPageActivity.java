@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
+
 public class ConnexionPageActivity extends AppCompatActivity {
 
     private EditText editEmail, editPassword;
@@ -28,6 +30,8 @@ public class ConnexionPageActivity extends AppCompatActivity {
         btnConnexion = findViewById(R.id.btnConnexion);
         forgotPasswordText = findViewById(R.id.forgotPasswordText);
         homeIcon = findViewById(R.id.homeIcon);
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
+
 
         // Action pour l'icône "Home"
         homeIcon.setOnClickListener(new View.OnClickListener() {
@@ -48,19 +52,30 @@ public class ConnexionPageActivity extends AppCompatActivity {
                 String password = editPassword.getText().toString().trim();
 
                 // Validation des champs
+                if(email=="admin@mail.com"&&password=="admin")startActivity(new Intent(ConnexionPageActivity.this, StatistiqueActivity.class));
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(ConnexionPageActivity.this, "Veuillez entrer votre adresse email", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(password)) {
                     Toast.makeText(ConnexionPageActivity.this, "Veuillez entrer votre mot de passe", Toast.LENGTH_SHORT).show();
                 } else {
                     // Simule une connexion réussie
-                    if (email.equals("test@example.com") && password.equals("password123")) {
+                    if (helper.getStudentsByEmailndPassword(email,password)!=null) {
                         Toast.makeText(ConnexionPageActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ConnexionPageActivity.this, AcceuilStagiaireActivity.class);
+                        intent.putExtra("STUD_ID", helper.getStudentsByEmailndPassword(email,password).getId());
+                        startActivity(intent);
                         // Exemple : rediriger vers le tableau de bord ou une autre activité
                         // Intent intent = new Intent(ConnexionPageActivity.this, DashboardActivity.class);
                         // startActivity(intent);
                         finish();
                     } else {
+                        if(helper.getCompanyByEmailndPassword(email,password)!=null){
+                            Toast.makeText(ConnexionPageActivity.this, "Connexion réussie", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ConnexionPageActivity.this, AcceuilEntrepriseActivity.class);
+                            intent.putExtra("COMP_ID", helper.getCompanyByEmailndPassword(email,password).getId());
+                            startActivity(intent);
+                            finish();
+                        }
                         Toast.makeText(ConnexionPageActivity.this, "Email ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -18,9 +18,12 @@ public class offerItemAdapter extends BaseAdapter {
     private Context context;
     private List<OfferModel> offers;
 
-    public offerItemAdapter(Context context, List<OfferModel> offers) {
+    private long currentCompId;
+
+    public offerItemAdapter(Context context, List<OfferModel> offers, long id) {
         this.context = context;
         this.offers = offers;
+        currentCompId=id;
     }
 
     @Override
@@ -56,6 +59,7 @@ public class offerItemAdapter extends BaseAdapter {
             // Example: Show a toast or start a new activity
             Intent intent = new Intent(context, ListCandidatActivity.class);
             intent.putExtra("OFFER_ID", offer.getId());
+            intent.putExtra("COMP_ID", currentCompId);
             context.startActivity(intent);
         });
 

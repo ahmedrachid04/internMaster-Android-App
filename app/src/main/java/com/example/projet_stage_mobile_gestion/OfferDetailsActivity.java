@@ -1,6 +1,9 @@
 package com.example.projet_stage_mobile_gestion;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.projet_stage_mobile_gestion.DataBase.Models.OfferModel;
@@ -19,12 +22,16 @@ public class OfferDetailsActivity extends AppCompatActivity {
     private TextView endDateTextView;
     private TextView postDateTextView;
     private TextView companyNameTextView;
+    private Button apply;
+    private ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.offerdetails);
 
+        long currentOfferId=getIntent().getLongExtra("OFF_ID",1);
+        long currentStudentId=getIntent().getLongExtra("STUD_ID",1);
         InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
 
         // Initialiser les TextViews
@@ -37,9 +44,11 @@ public class OfferDetailsActivity extends AppCompatActivity {
         endDateTextView = findViewById(R.id.endDateTextView);
         postDateTextView = findViewById(R.id.postDateTextView);
         companyNameTextView = findViewById(R.id.companyNameTextView);
+        apply=findViewById(R.id.applyButton);
+        back=findViewById(R.id.backArrowImageView);
 
         // Récupérer les données de l'offre (supposons que l'offre soit passée en extra)
-        OfferModel offer = (OfferModel) getIntent().getSerializableExtra("offer");
+        OfferModel offer = helper.getOffersById(currentOfferId);
 
         if (offer != null) {
             // Afficher les informations dans les TextViews
@@ -57,6 +66,18 @@ public class OfferDetailsActivity extends AppCompatActivity {
 
             companyNameTextView.setText(helper.getCompaniesById(offer.getCompanyId()).getName());
         }
+
+        apply.setOnClickListener(v -> {
+            Intent intent=new Intent(OfferDetailsActivity.this, PostulerActivity.class);
+            intent.putExtra("OFF_ID",currentOfferId);
+            intent.putExtra("STUD_ID",currentStudentId);
+            startActivity(intent);
+        });
+        back.setOnClickListener(v -> {
+            Intent intent=new Intent(OfferDetailsActivity.this, AcceuilStagiaireActivity.class);
+            intent.putExtra("STUD_ID",currentStudentId);
+            startActivity(intent);
+        });
     }
 }
 

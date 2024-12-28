@@ -327,7 +327,7 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         List<OfferModel> results = new ArrayList<>();
         Cursor c;
-        String query = "SELECT o.*, c.* FROM " + OFFER_TABLE + " o JOIN "+COMPANY_TABLE+" c ON o."+COMPANY_TABLE+"_"+ID+" = c."+ID+" WHERE "+ID+" = ?;";
+        String query = "SELECT o.*, c.* FROM " + OFFER_TABLE + " o JOIN "+COMPANY_TABLE+" c ON o."+COMPANY_TABLE+"_"+ID+" = c."+ID+" WHERE o."+ID+" = ?;";
         c = db.rawQuery(query, new String[]{String.valueOf(wantedId)});
         OfferModel offer=null;
 

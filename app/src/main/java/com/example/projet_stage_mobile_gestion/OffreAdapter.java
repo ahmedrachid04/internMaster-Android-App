@@ -1,6 +1,7 @@
 package com.example.projet_stage_mobile_gestion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,12 @@ public class OffreAdapter extends RecyclerView.Adapter<OffreAdapter.OffreViewHol
 
     private List<OfferModel> offerList;
     private Context context;
+    private long currentStudentId;
 
-    public OffreAdapter(List<OfferModel> offerList, Context context) {
+    public OffreAdapter(List<OfferModel> offerList, Context context, long id) {
         this.offerList = offerList;
         this.context=context;
+        this.currentStudentId=id;
     }
 
     @NonNull
@@ -43,6 +46,12 @@ public class OffreAdapter extends RecyclerView.Adapter<OffreAdapter.OffreViewHol
         holder.domaine.setText(offer.getDomaine());
         holder.type.setText("Type: " + offer.getType().toString());
         holder.duree.setText(offer.getDuration());
+        holder.details.setOnClickListener(v -> {
+            Intent intent = new Intent(context, OfferDetailsActivity.class);
+            intent.putExtra("OFF_ID", offer.getId());
+            intent.putExtra("STUD_ID",currentStudentId);
+            context.startActivity(intent);
+        });
     }
 
     /*public void onBindViewHolder(@NonNull OffreViewHolder holder, int position) {
@@ -63,7 +72,7 @@ public class OffreAdapter extends RecyclerView.Adapter<OffreAdapter.OffreViewHol
     // ViewHolder pour chaque élément de la liste
     public static class OffreViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nomEntreprise, domaine, type, duree;
+        TextView nomEntreprise, domaine, type, duree, details;
 
         public OffreViewHolder(View itemView) {
             super(itemView);
@@ -71,6 +80,7 @@ public class OffreAdapter extends RecyclerView.Adapter<OffreAdapter.OffreViewHol
             domaine = itemView.findViewById(R.id.textView_domaine);
             type = itemView.findViewById(R.id.textView_type);
             duree = itemView.findViewById(R.id.textView_duration);
+            details=itemView.findViewById(R.id.textView_moreDetails);
 
         }
     }

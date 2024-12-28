@@ -1,6 +1,7 @@
 package com.example.projet_stage_mobile_gestion;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,11 @@ public class CandidatAdapter extends RecyclerView.Adapter<CandidatAdapter.ViewHo
         holder.viewRequest.setOnClickListener(v -> {
             // Handle Request click (e.g., open details)
         });
+//        holder.profileIcon.setOnClickListener(v -> {
+//            Intent intent=new Intent(this.context,ProfilStagiaireActivity.class);
+//            intent.putExtra("STUD_ID",helper.getStudentsById(application.getStudentId()).getId());
+//            context.startActivity(intent);
+//        });
     }
 
     @Override

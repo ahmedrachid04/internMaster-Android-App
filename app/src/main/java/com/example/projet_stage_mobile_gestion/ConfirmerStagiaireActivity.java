@@ -12,6 +12,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.projet_stage_mobile_gestion.DataBase.Models.StudentModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
+
 public class ConfirmerStagiaireActivity extends AppCompatActivity {
 
     // Pour afficher le texte reçu
@@ -35,6 +38,7 @@ public class ConfirmerStagiaireActivity extends AppCompatActivity {
         textViewSpecialite = findViewById(R.id.popup_specialiteS);
         textViewEmail = findViewById(R.id.popup_emailS);
         textViewTelephone = findViewById(R.id.popup_teleS);
+        InternshipDataBaseHelper helper = new InternshipDataBaseHelper(this);
 
         // Récupérer le texte depuis l'Intent
         String receivedTextNom = getIntent().getStringExtra("TEXT_KEY_Nom");
@@ -74,8 +78,12 @@ public class ConfirmerStagiaireActivity extends AppCompatActivity {
         buttonConfirmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                StudentModel student = new StudentModel(receivedTextPrenom, receivedTextNom, receivedTextEmail, receivedTextTelephone, receivedTextSpecialite, null, receivedTextEcole, receivedTextPassword);
+                helper.addStudent(student);
+                StudentModel createdStudent=helper.getStudentsByEmailndPassword(receivedTextEmail,receivedTextPassword);
                 // Créer un Intent pour lancer l'Activity InscriptionEntreprise
                 Intent intent = new Intent(ConfirmerStagiaireActivity.this, ProfilStagiaireActivity.class);
+                intent.putExtra("STUD_ID", createdStudent.getId());
                 startActivity(intent);
             }
         });
