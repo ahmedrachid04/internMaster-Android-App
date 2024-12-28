@@ -1,7 +1,7 @@
 package com.example.projet_stage_mobile_gestion;
-
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -10,12 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class InscriptionStagiaireActivity extends AppCompatActivity {
 
@@ -28,6 +25,9 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
     EditText editTextPassword;
     EditText editTextConfirmerPassword;
     Button editTextProfil;
+
+    private static final int PICK_FILE_REQUEST = 1;  // Code pour identifier la sélection de fichier
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,14 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
         editTextConfirmerPassword = findViewById(R.id.editTextConfirmPasswordEt);
         editTextProfil = findViewById(R.id.buttonUploadProfilee);
 
+        // Ajout de l'écouteur de clic pour le bouton "Importer un fichier"
+        editTextProfil.setOnClickListener(v -> {
+            // Ouvrir un sélecteur de fichiers
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("*/*");  // Vous pouvez restreindre le type de fichier, par exemple "application/pdf" ou "image/*"
+            intent.addCategory(Intent.CATEGORY_OPENABLE);
+            startActivityForResult(intent, PICK_FILE_REQUEST);
+        });
 
         TextView firstNameTextView = findViewById(R.id.textViewFirstN);
         TextView lastNameTextView = findViewById(R.id.textViewLastN);
@@ -53,8 +61,6 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
         TextView profileTextView = findViewById(R.id.textViewProfilee);
         TextView passwordTextView = findViewById(R.id.textViewPasswordEt);
         TextView confirmPasswordTextView = findViewById(R.id.textViewCPasswordEt);
-
-
 
         firstNameTextView.setText(getColoredText("Nom : ", "", Color.RED));
         lastNameTextView.setText(getColoredText("Prénom : ", "", Color.RED));
@@ -69,36 +75,46 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
         // Lier le bouton "Continuer" avec son ID
         Button buttonContinuer = findViewById(R.id.buttonSubmit);
 
-        // Ajouter un OnClickListener pour naviguer vers PopupStagiaire
-        buttonContinuer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Récupérer le texte saisi
-                String userTextNom = editTextNom.getText().toString();
-                String userTextPrenom = editTextPrenom.getText().toString();
-                String userTextEcole = editTextEcole.getText().toString();
-                String userTextSpecialite = editTextSpecialite.getText().toString();
-                String userTextEmail = editTextEmail.getText().toString();
-                String userTextTelephone = editTextTelephone.getText().toString();
-                String userTextPassword = editTextPassword.getText().toString();
-                String userTextConfirmerPassword = editTextConfirmerPassword.getText().toString();
+        // Ajouter un OnClickListener pour naviguer vers ConfirmerStagiaireActivity
+        buttonContinuer.setOnClickListener(v -> {
+            // Récupérer le texte saisi
+            String userTextNom = editTextNom.getText().toString();
+            String userTextPrenom = editTextPrenom.getText().toString();
+            String userTextEcole = editTextEcole.getText().toString();
+            String userTextSpecialite = editTextSpecialite.getText().toString();
+            String userTextEmail = editTextEmail.getText().toString();
+            String userTextTelephone = editTextTelephone.getText().toString();
+            String userTextPassword = editTextPassword.getText().toString();
+            String userTextConfirmerPassword = editTextConfirmerPassword.getText().toString();
 
+            // Créer un Intent pour lancer l'Activity ConfirmerStagiaireActivity
+            Intent intent = new Intent(InscriptionStagiaireActivity.this, ConfirmerStagiaireActivity.class);
 
-                // Créer un Intent pour lancer l'Activity PopupEntreprise
-                Intent intent = new Intent(InscriptionStagiaireActivity.this, ConfirmerStagiaireActivity.class );
-
-                // Envoyer le texte
-                intent.putExtra("TEXT_KEY_Nom", userTextNom);
-                intent.putExtra("TEXT_KEY_Prenom", userTextPrenom);
-                intent.putExtra("TEXT_KEY_Ecole", userTextEcole);
-                intent.putExtra("TEXT_KEY_Specialite", userTextSpecialite);
-                intent.putExtra("TEXT_KEY_Email", userTextEmail);
-                intent.putExtra("TEXT_KEY_Telephone", userTextTelephone);
-                intent.putExtra("TEXT_KEY_Password", userTextPassword);
-                intent.putExtra("TEXT_KEY_ConfirmerPassword", userTextConfirmerPassword);
-                startActivity(intent);
-            }
+            // Envoyer les données
+            intent.putExtra("TEXT_KEY_Nom", userTextNom);
+            intent.putExtra("TEXT_KEY_Prenom", userTextPrenom);
+            intent.putExtra("TEXT_KEY_Ecole", userTextEcole);
+            intent.putExtra("TEXT_KEY_Specialite", userTextSpecialite);
+            intent.putExtra("TEXT_KEY_Email", userTextEmail);
+            intent.putExtra("TEXT_KEY_Telephone", userTextTelephone);
+            intent.putExtra("TEXT_KEY_Password", userTextPassword);
+            intent.putExtra("TEXT_KEY_ConfirmerPassword", userTextConfirmerPassword);
+            startActivity(intent);
         });
+    }
+
+    // Méthode pour gérer l'activation de l'intent de fichier
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && requestCode == PICK_FILE_REQUEST) {
+            if (data != null) {
+                Uri fileUri = data.getData();
+                // Afficher un Toast pour indiquer le chemin du fichier sélectionné
+                Toast.makeText(this, "Fichier sélectionné : " + fileUri.getPath(), Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private SpannableString getColoredText(String fullText, String target, int color) {
@@ -110,4 +126,5 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
         }
         return spannableString;
     }
+
 }

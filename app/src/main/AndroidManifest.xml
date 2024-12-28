@@ -68,7 +68,17 @@
         <activity
             android:name=".StatistiqueActivity"
             android:exported="true" />
-        
+        <activity
+            android:name=".PostulerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ListCandidatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OfferDetailsActivity"
+            android:exported="true" />
+
+
 
 
 

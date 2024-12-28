@@ -96,8 +96,10 @@
             android:id="@+id/buttonUploadLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#D9D9D9"
-            android:text="Importer un fichier" />
+            android:backgroundTint="#B3C7F0"
+            android:text="Importer un fichier"
+            android:onClick="onUploadLogoClick" />
+
 
         <TextView
             android:id="@+id/textViewPassword"

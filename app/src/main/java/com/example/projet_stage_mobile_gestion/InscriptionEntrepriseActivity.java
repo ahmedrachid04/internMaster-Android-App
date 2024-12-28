@@ -2,16 +2,18 @@ package com.example.projet_stage_mobile_gestion;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class InscriptionEntrepriseActivity extends AppCompatActivity {
@@ -22,6 +24,9 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
     EditText editTextPassword;
     EditText editTextConfirmerPassword;
     Button editTextLogo;
+
+    private static final int REQUEST_CODE_PICK_FILE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +40,16 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
         editTextConfirmerPassword = findViewById(R.id.editTextConfirmPassword);
         editTextLogo = findViewById(R.id.buttonUploadLogo);
 
-
+        // Ajouter un OnClickListener pour télécharger le logo
+        editTextLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*"); // Fichiers image uniquement
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(Intent.createChooser(intent, "Sélectionnez un logo"), REQUEST_CODE_PICK_FILE);
+            }
+        });
 
         // TextView avec des étoiles
         TextView companyTextView = findViewById(R.id.textViewCompany);
@@ -88,6 +102,23 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // Gérer le résultat du sélecteur de fichiers
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_PICK_FILE && resultCode == RESULT_OK) {
+            if (data != null) {
+                Uri selectedFileUri = data.getData();
+                if (selectedFileUri != null) {
+                    // Affiche le chemin ou nom du fichier sélectionné (pour débogage)
+                    Log.d("LogoSelection", "Fichier sélectionné : " + selectedFileUri.toString());
+                    Toast.makeText(this, "Logo sélectionné avec succès", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
     }
 
     // Méthode pour appliquer une couleur à une partie spécifique du texte
