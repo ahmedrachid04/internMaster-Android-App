@@ -68,7 +68,7 @@ public class AcceuilEntrepriseActivity extends AppCompatActivity {
             EditText etType = findViewById(R.id.et_type);
             EditText etDuration = findViewById(R.id.et_duration);
             EditText etDuration1 = findViewById(R.id.et_duration1);
-            EditText etProfil = findViewById(R.id.et_profil_rechercher);
+            EditText etProfil = findViewById(R.id.et_profil);
 
             String companyName = etCompanyName.getText().toString();
             String domaine = etDomaine.getText().toString();
