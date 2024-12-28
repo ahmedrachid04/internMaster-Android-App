@@ -436,7 +436,7 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
         return results;
     }
 
-    public List<ApplicationModel> getOffersApplications(int offId){
+    public List<ApplicationModel> getOffersApplications(long offId){
         SQLiteDatabase db = this.getReadableDatabase();
         List<ApplicationModel> results = new ArrayList<>();
         Cursor c;

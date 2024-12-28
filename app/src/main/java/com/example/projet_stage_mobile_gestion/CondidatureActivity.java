@@ -40,7 +40,7 @@ public class CondidatureActivity extends AppCompatActivity {
         }
 
         // Adapter personnalisé
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.offer_item, R.id.offer_title, offerTitles);
+        offerItemAdapter adapter = new offerItemAdapter(this, offers);
         offersListView.setAdapter(adapter);
 
 // Initialisation du bouton Menu

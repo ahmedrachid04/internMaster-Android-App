@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet_stage_mobile_gestion.DataBase.Models.ApplicationModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
 
 import java.util.List;
 
@@ -33,7 +34,9 @@ public class CandidatAdapter extends RecyclerView.Adapter<CandidatAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ApplicationModel application = applications.get(position);
-        String candidatName="placeholder names";
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this.context);
+
+        String candidatName=helper.getStudentsById(application.getStudentId()).getFirstName()+helper.getStudentsById(application.getStudentId()).getLastName();
         holder.name.setText(candidatName);
         holder.viewCV.setOnClickListener(v -> {
             // Handle CV click (e.g., open URL or show details)
