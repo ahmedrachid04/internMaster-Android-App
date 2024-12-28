@@ -11,9 +11,16 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
+import com.example.projet_stage_mobile_gestion.DataBase.Models.CompanyModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
+
 public class ProfilEntrepriseActivity extends AppCompatActivity {
 
     TextView textViewNom;
+    TextView textViewLocal;
+    TextView textViewNumero;
+
+    long currentCompId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +28,22 @@ public class ProfilEntrepriseActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.profilentreprise);
 
+        currentCompId = getIntent().getLongExtra("COMP_ID",1);
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
+        CompanyModel currentCompany=helper.getCompaniesById(currentCompId);
+
         // Initialisation du TextView
         textViewNom = findViewById(R.id.title);
+        textViewLocal=findViewById(R.id.local);
+        textViewNumero=findViewById(R.id.tel);
 
         // Récupérer le texte depuis l'Intent
         String receivedTextNom = getIntent().getStringExtra("TEXT_KEY_Nom");
 
         // Afficher le texte dans le TextView
-        textViewNom.setText(receivedTextNom);
+        textViewNom.setText(currentCompany.getName());
+        textViewLocal.setText(currentCompany.getAddresse());
+        textViewNumero.setText(currentCompany.getContactNumber());
 
         // Initialisation du bouton Menu
         ImageView menuButton = findViewById(R.id.imageView_menu);
@@ -43,13 +58,19 @@ public class ProfilEntrepriseActivity extends AppCompatActivity {
         // Gestion des éléments du menu
         popupMenu.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.profil) {
-                startActivity(new Intent(ProfilEntrepriseActivity.this, ProfilEntrepriseActivity.class));
+                Intent intent=new Intent(ProfilEntrepriseActivity.this, ProfilEntrepriseActivity.class);
+                intent.putExtra("COMP_ID",currentCompId);
+                startActivity(intent);
                 return true;
             } else if (item.getItemId() == R.id.listeCondidat) {
-                startActivity(new Intent(ProfilEntrepriseActivity.this, CondidatureActivity.class));
+                Intent intent=new Intent(ProfilEntrepriseActivity.this, CondidatureActivity.class);
+                intent.putExtra("COMP_ID",currentCompId);
+                startActivity(intent);
                 return true;
             } else {
-                startActivity(new Intent(ProfilEntrepriseActivity.this, AcceuilEntrepriseActivity.class));
+                Intent intent=new Intent(ProfilEntrepriseActivity.this, AcceuilEntrepriseActivity.class);
+                intent.putExtra("COMP_ID",currentCompId);
+                startActivity(intent);
                 return true;
             }
         });

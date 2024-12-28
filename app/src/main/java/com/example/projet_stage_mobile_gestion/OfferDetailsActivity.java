@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.projet_stage_mobile_gestion.DataBase.Models.OfferModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
 
 import java.text.SimpleDateFormat;
 
@@ -23,6 +24,8 @@ public class OfferDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.offerdetails);
+
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
 
         // Initialiser les TextViews
         titleTextView = findViewById(R.id.titleTextView);
@@ -52,7 +55,7 @@ public class OfferDetailsActivity extends AppCompatActivity {
             endDateTextView.setText(dateFormat.format(offer.getEndDate()));
             postDateTextView.setText(dateFormat.format(offer.getPostDate()));
 
-            companyNameTextView.setText(offer.getCompanyName());
+            companyNameTextView.setText(helper.getCompaniesById(offer.getCompanyId()).getName());
         }
     }
 }

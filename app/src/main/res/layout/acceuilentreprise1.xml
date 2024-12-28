@@ -58,10 +58,10 @@
         android:visibility="gone">
 
         <EditText
-            android:id="@+id/et_company_name"
+            android:id="@+id/et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nom de l'entreprise"
+            android:hint="Nom de l'offre"
             android:inputType="text" />
 
         <EditText
@@ -89,13 +89,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date Debut"
-            android:inputType="text" />
+            android:inputType="date" />
         <EditText
             android:id="@+id/et_duration2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Date Fin"
-            android:inputType="text" />
+            android:inputType="date" />
         <EditText
             android:id="@+id/et_profil"
             android:layout_width="match_parent"
@@ -115,8 +115,8 @@
     <!-- RecyclerView pour afficher les offres -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_offres"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="368dp"
+        android:layout_height="541dp"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="16dp"
         android:padding="10dp" />

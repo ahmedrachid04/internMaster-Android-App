@@ -21,7 +21,6 @@ public class OfferModel {
 
     private long companyId;
 
-    private String companyName; // Champ pour le nom de l'entreprise
 
 
 
@@ -41,7 +40,7 @@ public class OfferModel {
 
     }
 
-    public OfferModel(String title, String description, Type type, String domaine, String duration, Date startDate, Date endDate, Date postDate, long companyId, String companyName) {
+    public OfferModel(String title, String description, Type type, String domaine, String duration, Date startDate, Date endDate, Date postDate, long companyId) {
         this.title = title;
         this.description = description;
         this.type = type;
@@ -51,7 +50,6 @@ public class OfferModel {
         this.endDate = endDate;
         this.postDate = postDate;
         this.companyId = companyId;
-        this.companyName = companyName;
     }
     public OfferModel(){}
 
@@ -133,14 +131,6 @@ public class OfferModel {
 
     public void setCompanyId(long companyId) {
         this.companyId = companyId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.projet_stage_mobile_gestion;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet_stage_mobile_gestion.DataBase.Models.OfferModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
 
 import java.util.List;
 
 public class OffreAdapter2 extends RecyclerView.Adapter<OffreAdapter2.OffreViewHolder> {
 
     private List<OfferModel> offerList;
+    private Context context;
 
-    public OffreAdapter2(List<OfferModel> offerList) {
+
+    public OffreAdapter2(List<OfferModel> offerList, Context context) {
         this.offerList = offerList;
+        this.context=context;
     }
 
     @NonNull
@@ -31,9 +36,11 @@ public class OffreAdapter2 extends RecyclerView.Adapter<OffreAdapter2.OffreViewH
     @Override
     public void onBindViewHolder(@NonNull OffreViewHolder holder, int position) {
         // Assigner les données du modèle aux vues
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(context);
         OfferModel offer = offerList.get(position);
+        String companyName=helper.getCompaniesById(offer.getCompanyId()).getName();
 
-        holder.nomEntreprise.setText(offer.getCompanyName());  // Afficher le nom de l'entreprise
+        holder.nomEntreprise.setText(companyName);  // Afficher le nom de l'entreprise
         holder.domaine.setText(offer.getDomaine());
         holder.type.setText("Type: " + offer.getType().toString());
         holder.duree.setText(offer.getDuration());

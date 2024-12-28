@@ -44,7 +44,7 @@ public class AcceuilStagiaireActivity extends AppCompatActivity {
         offerList.add(new OfferModel(3, "Stage Marketing", "Analyse de marché", Type.PFA, "Marketing", "2 mois", startDate, endDate, postDate, 3));
 
         // Initialiser l'adaptateur et lier au RecyclerView
-        offreAdapter = new OffreAdapter(offerList);
+        offreAdapter = new OffreAdapter(offerList,this);
         recyclerViewOffres.setAdapter(offreAdapter);
 
         // Ajouter l'événement de clic sur l'ImageView pour accéder au profil

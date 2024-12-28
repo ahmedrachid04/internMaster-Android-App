@@ -72,6 +72,7 @@
                 android:textColor="@color/Light_blue"/>
 
             <TextView
+                android:id="@+id/local"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Localisation"
@@ -80,17 +81,19 @@
                 android:layout_marginTop="8dp"/>
 
             <TextView
+                android:id="@+id/email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Activités"
+                android:text="Email"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:layout_marginTop="8dp"/>
 
             <TextView
+                android:id="@+id/tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Événements"
+                android:text="Numero Telephone"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:layout_marginTop="8dp"/>

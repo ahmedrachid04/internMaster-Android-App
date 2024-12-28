@@ -289,27 +289,24 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
     }
 
     //methods to get data by id(?)(idk bit gha nvalidi)
-    public List<StudentModel> getStudentsById(int wantedId){
+    public StudentModel getStudentsById(long wantedId){
         SQLiteDatabase db=this.getReadableDatabase();
-        List<StudentModel> results=new ArrayList<>();
-        StudentModel student;
+        StudentModel student=null;
         String query="SELECT * FROM "+STUDENT_TABLE+" WHERE "+ID+" = ?;";
         Cursor c=db.rawQuery(query,new String[]{String.valueOf(wantedId)});
         while(c.moveToNext()){
             student=new StudentModel(c.getLong(c.getColumnIndexOrThrow(ID)),c.getString(c.getColumnIndexOrThrow(FIRST_NAME)),c.getString(c.getColumnIndexOrThrow(LAST_NAME)),c.getString(c.getColumnIndexOrThrow(EMAIL)),c.getString(c.getColumnIndexOrThrow(NUMBER)),c.isNull(c.getColumnIndexOrThrow("specialty")) ? null : c.getString(c.getColumnIndexOrThrow("specialty")),c.isNull(c.getColumnIndexOrThrow("profile_picture")) ? null : c.getBlob(c.getColumnIndexOrThrow("profile_picture")),c.isNull(c.getColumnIndexOrThrow("school")) ? null : c.getString(c.getColumnIndexOrThrow("school")),c.getString(c.getColumnIndexOrThrow(PASSWORD)));
-            results.add(student);
         }
         c.close();
-        return results;
+        return student;
     }
 
-    public List<CompanyModel> getCompaniesById(int wantedId){
+    public CompanyModel getCompaniesById(long wantedId){
         SQLiteDatabase db=this.getReadableDatabase();
         String query="SELECT * FROM "+COMPANY_TABLE+" WHERE "+ID+" = ?;";
-        CompanyModel company;
-        List<CompanyModel> results=new ArrayList<>();
+        CompanyModel company=null;
         Cursor c=db.rawQuery(query,new String[]{String.valueOf(wantedId)});
-        while(c.moveToNext()){
+        if(c.moveToFirst()){
             int id = c.getInt(c.getColumnIndexOrThrow(ID));
             String name = c.getString(c.getColumnIndexOrThrow(NAME));
             String addresse = c.isNull(c.getColumnIndexOrThrow(ADDRESSE)) ? null : c.getString(c.getColumnIndexOrThrow(ADDRESSE));
@@ -321,20 +318,20 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
             String password = c.getString(c.getColumnIndexOrThrow(PASSWORD));
 
             company = new CompanyModel(id, name, addresse, email, phoneNumber, fax, description, logo, password);
-            results.add(company);
         }
         c.close();
-        return results;
+        return company;
     }
 
-    public List<OfferModel> getOffersById(int wantedId) {
+    public OfferModel getOffersById(long wantedId) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<OfferModel> results = new ArrayList<>();
         Cursor c;
         String query = "SELECT o.*, c.* FROM " + OFFER_TABLE + " o JOIN "+COMPANY_TABLE+" c ON o."+COMPANY_TABLE+"_"+ID+" = c."+ID+" WHERE "+ID+" = ?;";
         c = db.rawQuery(query, new String[]{String.valueOf(wantedId)});
+        OfferModel offer=null;
 
-        while (c.moveToNext()) {
+        if (c.moveToFirst()) {
             int id = c.getInt(c.getColumnIndexOrThrow(ID));
             String title = c.getString(c.getColumnIndexOrThrow("title"));
             String description = c.isNull(c.getColumnIndexOrThrow(DESCRIPTION)) ? null : c.getString(c.getColumnIndexOrThrow(DESCRIPTION));
@@ -345,53 +342,18 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
             Date endDate = new Date(c.getLong(c.getColumnIndexOrThrow("end_date")));
             Date postDate = new Date(c.getLong(c.getColumnIndexOrThrow("post_date")));
             long companyId = c.getLong((c.getColumnIndexOrThrow("c."+ID)));
-            OfferModel offer = new OfferModel(id, title, description, type, domaine, duration, startDate, endDate, postDate, companyId);
+            offer = new OfferModel(id, title, description, type, domaine, duration, startDate, endDate, postDate, companyId);
             results.add(offer);
         }
         c.close();
 
 
-        return results;
-    }
-    //methode pour recuperer les offres avec le nom des entreprises
-    public List<OfferModel> getOffersWithCompanyName() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        List<OfferModel> results = new ArrayList<>();
-
-        // Requête SQL pour obtenir les offres avec le nom de l'entreprise
-        String query = "SELECT o.*, c.name AS company_name FROM " + OFFER_TABLE + " o " +
-                "JOIN " + COMPANY_TABLE + " c ON o.company_id = c.id;";
-
-        Cursor c = null;
-        try {
-            c = db.rawQuery(query, null);
-
-            while (c.moveToNext()) {
-                int id = c.getInt(c.getColumnIndexOrThrow(ID));
-                String title = c.getString(c.getColumnIndexOrThrow("title"));
-                String description = c.isNull(c.getColumnIndexOrThrow(DESCRIPTION)) ? null : c.getString(c.getColumnIndexOrThrow(DESCRIPTION));
-                Type type = Type.valueOf(c.getString(c.getColumnIndexOrThrow("type")));
-                String domaine = c.getString(c.getColumnIndexOrThrow("domaine"));
-                String duration = c.getString(c.getColumnIndexOrThrow("duration"));
-                Date startDate = new Date(c.getLong(c.getColumnIndexOrThrow("start_date")));
-                Date endDate = new Date(c.getLong(c.getColumnIndexOrThrow("end_date")));
-                Date postDate = new Date(c.getLong(c.getColumnIndexOrThrow("post_date")));
-                long companyId = c.getLong((c.getColumnIndexOrThrow("c."+ID)));
-                String companyName = c.getString(c.getColumnIndexOrThrow("company_name"));  // Récupère le nom de l'entreprise
-
-                OfferModel offer = new OfferModel(title, description, type, domaine, duration, startDate, endDate, postDate, companyId, companyName);
-                results.add(offer);
-            }
-        } finally {
-            if (c != null) c.close();
-            db.close();
-        }
-
-        return results;
+        return offer;
     }
 
 
-    public List<ApplicationModel> getApplicationsById(int wantedId) {
+
+    public ApplicationModel getApplicationsById(long wantedId) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<ApplicationModel> results = new ArrayList<>();
         String query = "SELECT a.*, s.*, o.* " +
@@ -400,8 +362,9 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
                 "JOIN " + OFFER_TABLE + " o ON a." + OFFER_TABLE + "_" + ID + " = o." + ID + " " +
                 "WHERE a." + ID + " = ?;";
         Cursor c = db.rawQuery(query, new String[]{String.valueOf(wantedId)});
+        ApplicationModel app=null;
 
-        while (c.moveToNext()) {
+        if (c.moveToFirst()) {
             // Map the application fields
             int id = c.getInt(c.getColumnIndexOrThrow("a." + ID));
             Date applicationDate = new Date(c.getLong(c.getColumnIndexOrThrow("a." + APPLICATION_TABLE + "_date")));
@@ -415,13 +378,13 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
             // Map the offer fields
             long offerId = c.getLong(c.getColumnIndexOrThrow("o." + ID));
 
-            results.add(new ApplicationModel(id, applicationDate, status, cv, applicationLetter, studentId, offerId));
+            app = new ApplicationModel(id, applicationDate, status, cv, applicationLetter, studentId, offerId);
         }
         c.close();
-        return results;
+        return app;
     }
 
-    public List<OfferModel> getCompnysOffers(int compId){
+    public List<OfferModel> getCompnysOffers(long compId){
         SQLiteDatabase db = this.getReadableDatabase();
         List<OfferModel> results = new ArrayList<>();
         Cursor c;
@@ -680,6 +643,129 @@ public class InternshipDataBaseHelper extends SQLiteOpenHelper {
         values.put("application_letter", applicationLetter);
         int result = db.update(APPLICATION_TABLE, values, "id = ?", new String[]{String.valueOf(id)});
         return result > 0;
+    }
+
+    public CompanyModel getCompanyByEmailndPassword(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + COMPANY_TABLE + " WHERE " + EMAIL + " = ? AND " + PASSWORD + " = ?;";
+        Cursor c = db.rawQuery(query, new String[]{email, password});
+        CompanyModel company=null;
+        try {
+            if (c.moveToFirst()) {
+                int id = c.getInt(c.getColumnIndexOrThrow(ID));
+                String name = c.getString(c.getColumnIndexOrThrow(NAME));
+                String addresse = c.isNull(c.getColumnIndexOrThrow(ADDRESSE)) ? null : c.getString(c.getColumnIndexOrThrow(ADDRESSE));
+                String newEmail = c.getString(c.getColumnIndexOrThrow(EMAIL));
+                String phoneNumber = c.getString(c.getColumnIndexOrThrow(NUMBER));
+                String fax = c.isNull(c.getColumnIndexOrThrow("fax")) ? null : c.getString(c.getColumnIndexOrThrow("fax"));
+                String description = c.isNull(c.getColumnIndexOrThrow(DESCRIPTION)) ? null : c.getString(c.getColumnIndexOrThrow(DESCRIPTION));
+                byte[] logo = c.isNull(c.getColumnIndexOrThrow("logo")) ? null : c.getBlob(c.getColumnIndexOrThrow("logo"));
+                String newPassword = c.getString(c.getColumnIndexOrThrow(PASSWORD));
+
+                company = new CompanyModel(id, name, addresse, newEmail, phoneNumber, fax, description, logo, newPassword);
+            }
+        } finally {
+            c.close(); // Always close the Cursor
+        }
+
+        return company;
+    }
+
+
+    public StudentModel getStudentsByEmailndPassword(String email, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + STUDENT_TABLE + " WHERE " + EMAIL + " = ? AND " + PASSWORD + " = ?;";
+        Cursor c = db.rawQuery(query, new String[]{email, password});
+        StudentModel student=null;
+        try {
+            if (c.moveToFirst()) {
+                student = new StudentModel(
+                        c.getLong(c.getColumnIndexOrThrow(ID)),
+                        c.getString(c.getColumnIndexOrThrow(FIRST_NAME)),
+                        c.getString(c.getColumnIndexOrThrow(LAST_NAME)),
+                        c.getString(c.getColumnIndexOrThrow(EMAIL)),
+                        c.getString(c.getColumnIndexOrThrow(NUMBER)),
+                        c.isNull(c.getColumnIndexOrThrow("specialty")) ? null : c.getString(c.getColumnIndexOrThrow("specialty")),
+                        c.isNull(c.getColumnIndexOrThrow("profile_picture")) ? null : c.getBlob(c.getColumnIndexOrThrow("profile_picture")),
+                        c.isNull(c.getColumnIndexOrThrow("school")) ? null : c.getString(c.getColumnIndexOrThrow("school")),
+                        c.getString(c.getColumnIndexOrThrow(PASSWORD))
+                );
+            }
+        } finally {
+            c.close(); // Always close the Cursor
+        }
+
+        return student;
+    }
+    public StudentModel getApplicationSender(ApplicationModel applicationModel){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + STUDENT_TABLE + " WHERE " + ID + " = ?;";
+        Cursor c = db.rawQuery(query, new String[]{String.valueOf(applicationModel.getStudentId())});
+        StudentModel student=null;
+        try {
+            if (c.moveToFirst()) {
+                student = new StudentModel(
+                        c.getLong(c.getColumnIndexOrThrow(ID)),
+                        c.getString(c.getColumnIndexOrThrow(FIRST_NAME)),
+                        c.getString(c.getColumnIndexOrThrow(LAST_NAME)),
+                        c.getString(c.getColumnIndexOrThrow(EMAIL)),
+                        c.getString(c.getColumnIndexOrThrow(NUMBER)),
+                        c.isNull(c.getColumnIndexOrThrow("specialty")) ? null : c.getString(c.getColumnIndexOrThrow("specialty")),
+                        c.isNull(c.getColumnIndexOrThrow("profile_picture")) ? null : c.getBlob(c.getColumnIndexOrThrow("profile_picture")),
+                        c.isNull(c.getColumnIndexOrThrow("school")) ? null : c.getString(c.getColumnIndexOrThrow("school")),
+                        c.getString(c.getColumnIndexOrThrow(PASSWORD))
+                );
+            }
+        } finally {
+            c.close(); // Always close the Cursor
+        }
+
+        return student;
+    }
+
+
+    //admin functions
+
+    public long countStudents(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = 0;
+        String query = "SELECT COUNT(*) FROM student;";
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery(query, null);
+            if (cursor.moveToFirst()) {
+                count = cursor.getLong(0); // Retrieve the count from the first column
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close(); // Always close the cursor to avoid memory leaks
+            }
+        }
+        return count;
+    }
+
+    public long countCompanies(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        long count = 0;
+        String query = "SELECT COUNT(*) FROM company;";
+        Cursor cursor = null;
+
+        try {
+            cursor = db.rawQuery(query, null);
+            if (cursor.moveToFirst()) {
+                count = cursor.getLong(0); // Retrieve the count from the first column
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close(); // Always close the cursor to avoid memory leaks
+            }
+        }
+        return count;
+    }
+
+    public long countAll(){
+        return countStudents()+countCompanies();
     }
 
 

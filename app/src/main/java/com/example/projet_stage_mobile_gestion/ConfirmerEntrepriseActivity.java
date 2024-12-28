@@ -68,10 +68,11 @@ public class ConfirmerEntrepriseActivity extends AppCompatActivity {
                 //Presister les data
                 CompanyModel company=new CompanyModel(receivedTextNom, receivedTextAdresse, receivedTextEmail, receivedTextTelephone, "no fax yet", "no description yet", null, receivedTextPassword);
                 helper.addCompany(company);
-                CompanyModel createdComp;
+                CompanyModel createdComp=helper.getCompanyByEmailndPassword(receivedTextEmail,receivedTextPassword);
 
                 // Créer un Intent pour lancer l'Activity InscriptionEntreprise
                 Intent intent = new Intent(ConfirmerEntrepriseActivity.this, ProfilEntrepriseActivity.class);
+                intent.putExtra("COMP_ID", createdComp.getId());
                 startActivity(intent);
             }
         });
