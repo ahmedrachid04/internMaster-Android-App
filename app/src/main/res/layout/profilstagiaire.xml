@@ -38,11 +38,14 @@
 
             <!-- Icône Modifier -->
             <ImageView
-                android:id="@+id/edit_button"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_edit"
-                />
+                android:id="@+id/imageView_menu_stagiaire"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end|center_vertical"
+                android:src="@drawable/ic_menu"
+                android:contentDescription="menu_icon_desc"
+                android:clickable="true"
+                android:focusable="true" />
         </LinearLayout>
     </LinearLayout>
 

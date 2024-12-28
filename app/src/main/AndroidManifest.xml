@@ -56,6 +56,19 @@
         <activity
             android:name=".ProfilStagiaireActivity"
             android:exported="true" />
+        <activity
+            android:name=".CondidatureActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AcceuilEntrepriseActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AcceuilStagiaireActivity"
+            android:exported="true" />
+        <activity
+            android:name=".StatistiqueActivity"
+            android:exported="true" />
+        
 
 
 

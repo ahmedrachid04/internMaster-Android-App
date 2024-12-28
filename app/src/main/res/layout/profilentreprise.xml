@@ -6,17 +6,15 @@
     android:padding="16dp"
     android:background="@android:color/white">
     <!-- Bouton Menu en haut à droite -->
-    <ImageButton
-        android:id="@+id/menu_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="320dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="30dp"
-        android:background="@android:color/transparent"
+    <ImageView
+        android:id="@+id/imageView_menu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end|center_vertical"
         android:src="@drawable/ic_menu"
-        android:contentDescription="Menu Button" />
+        android:contentDescription="menu_icon_desc"
+        android:clickable="true"
+        android:focusable="true" />
 
     <!-- CardView pour le logo et le titre -->
     <androidx.cardview.widget.CardView

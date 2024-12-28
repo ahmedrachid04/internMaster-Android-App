@@ -102,11 +102,11 @@ public class AcceuilEntrepriseActivity extends AppCompatActivity {
                 startActivity(new Intent(AcceuilEntrepriseActivity.this, ProfilEntrepriseActivity.class));
                 return true;
             } else if (item.getItemId() == R.id.listeCondidat) {
-                startActivity(new Intent(AcceuilEntrepriseActivity.this, ListCandidatActivity.class));
+                startActivity(new Intent(AcceuilEntrepriseActivity.this, CondidatureActivity.class));
                 return true;
             } else {
-                Toast.makeText(AcceuilEntrepriseActivity.this, "Autre option sélectionnée", Toast.LENGTH_SHORT).show();
-                return false;
+                startActivity(new Intent(AcceuilEntrepriseActivity.this, AcceuilEntrepriseActivity.class));
+                return true;
             }
         });
         popupMenu.show();
