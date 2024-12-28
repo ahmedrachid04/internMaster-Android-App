@@ -43,6 +43,8 @@ public class ConfirmerStagiaireActivity extends AppCompatActivity {
         String receivedTextSpecialite = getIntent().getStringExtra("TEXT_KEY_Specialite");
         String receivedTextEmail = getIntent().getStringExtra("TEXT_KEY_Email");
         String receivedTextTelephone = getIntent().getStringExtra("TEXT_KEY_Telephone");
+        String receivedTextPassword = getIntent().getStringExtra("TEXT_KEY_Password");
+        String receivedTextConfirmerPassword = getIntent().getStringExtra("TEXT_KEY_ConfirmerPassword");
 
         // Afficher le texte dans le TextView
         textViewNom.setText(receivedTextNom);
@@ -73,7 +75,7 @@ public class ConfirmerStagiaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Créer un Intent pour lancer l'Activity InscriptionEntreprise
-                Intent intent = new Intent(ConfirmerStagiaireActivity.this, AcceuilStagiaireActivity.class);
+                Intent intent = new Intent(ConfirmerStagiaireActivity.this, ProfilStagiaireActivity.class);
                 startActivity(intent);
             }
         });

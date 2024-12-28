@@ -25,6 +25,9 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
     EditText editTextSpecialite;
     EditText editTextEmail;
     EditText editTextTelephone;
+    EditText editTextPassword;
+    EditText editTextConfirmerPassword;
+    Button editTextProfil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,10 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
         editTextSpecialite = findViewById(R.id.editTextSpecialtyy);
         editTextEmail = findViewById(R.id.editTextEmailEt);
         editTextTelephone = findViewById(R.id.editTextPhoneEt);
+        editTextPassword = findViewById(R.id.editTextPasswordEt);
+        editTextConfirmerPassword = findViewById(R.id.editTextConfirmPasswordEt);
+        editTextProfil = findViewById(R.id.buttonUploadProfilee);
+
 
         TextView firstNameTextView = findViewById(R.id.textViewFirstN);
         TextView lastNameTextView = findViewById(R.id.textViewLastN);
@@ -47,15 +54,17 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
         TextView passwordTextView = findViewById(R.id.textViewPasswordEt);
         TextView confirmPasswordTextView = findViewById(R.id.textViewCPasswordEt);
 
-        firstNameTextView.setText(getColoredText("Nom : *", "*", Color.RED));
-        lastNameTextView.setText(getColoredText("Prénom : *", "*", Color.RED));
-        schoolTextView.setText(getColoredText("École : *", "*", Color.RED));
-        specialtyTextView.setText(getColoredText("Spécialité : *", "*", Color.RED));
-        phoneTextView.setText(getColoredText("Numéro Téléphone  : *", "*", Color.RED));
-        emailTextView.setText(getColoredText("Email : *", "*", Color.RED));
-        profileTextView.setText(getColoredText("Profil : *", "*", Color.RED));
-        passwordTextView.setText(getColoredText("Mot de passe : *", "*", Color.RED));
-        confirmPasswordTextView.setText(getColoredText("Confirmer Mot de passe : *", "*", Color.RED));
+
+
+        firstNameTextView.setText(getColoredText("Nom : ", "", Color.RED));
+        lastNameTextView.setText(getColoredText("Prénom : ", "", Color.RED));
+        schoolTextView.setText(getColoredText("École : ", "", Color.RED));
+        specialtyTextView.setText(getColoredText("Spécialité : ", "", Color.RED));
+        phoneTextView.setText(getColoredText("Numéro Téléphone  : ", "", Color.RED));
+        emailTextView.setText(getColoredText("Email : ", "", Color.RED));
+        profileTextView.setText(getColoredText("Profil : ", "", Color.RED));
+        passwordTextView.setText(getColoredText("Mot de passe : ", "", Color.RED));
+        confirmPasswordTextView.setText(getColoredText("Confirmer Mot de passe : ", "", Color.RED));
 
         // Lier le bouton "Continuer" avec son ID
         Button buttonContinuer = findViewById(R.id.buttonSubmit);
@@ -71,6 +80,8 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
                 String userTextSpecialite = editTextSpecialite.getText().toString();
                 String userTextEmail = editTextEmail.getText().toString();
                 String userTextTelephone = editTextTelephone.getText().toString();
+                String userTextPassword = editTextPassword.getText().toString();
+                String userTextConfirmerPassword = editTextConfirmerPassword.getText().toString();
 
 
                 // Créer un Intent pour lancer l'Activity PopupEntreprise
@@ -83,6 +94,8 @@ public class InscriptionStagiaireActivity extends AppCompatActivity {
                 intent.putExtra("TEXT_KEY_Specialite", userTextSpecialite);
                 intent.putExtra("TEXT_KEY_Email", userTextEmail);
                 intent.putExtra("TEXT_KEY_Telephone", userTextTelephone);
+                intent.putExtra("TEXT_KEY_Password", userTextPassword);
+                intent.putExtra("TEXT_KEY_ConfirmerPassword", userTextConfirmerPassword);
                 startActivity(intent);
             }
         });

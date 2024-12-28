@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Postuler à l'offre"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="30dp" />
+
+        <!-- Nom -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom : "
+                android:textSize="18sp"
+                android:textColor="#004AC5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom" />
+
+        <!-- Prénom -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prénom : "
+                android:textSize="18sp"
+                android:textColor="#004AC5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Prénom" />
+
+        <!-- École -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="École : "
+                android:textSize="18sp"
+                android:textColor="#004AC5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextSchool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="École" />
+
+        <!-- Filière -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filière : "
+                android:textSize="18sp"
+                android:textColor="#004AC5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextFiliere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Filière" />
+
+        <!-- Offre -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offre : "
+                android:textSize="18sp"
+                android:textColor="#004AC5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Titre de l'offre" />
+
+        <!-- Joindre CV -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joindre CV : "
+                android:textSize="18sp"
+                android:textColor="#004AC5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonUploadCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Importer un fichier CV"
+            android:backgroundTint="#B3C7F0" />
+
+        <!-- Joindre lettre d'application -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Joindre lettre d'application : "
+                android:textSize="18sp"
+                android:textColor="#004AC5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*"
+                android:textSize="18sp"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonUploadLetter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Importer une lettre"
+            android:backgroundTint="#B3C7F0" />
+
+        <!-- Bouton Soumettre -->
+        <Button
+            android:id="@+id/buttonSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Soumettre"
+            android:layout_gravity="center"
+            android:backgroundTint="#003A9B"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</ScrollView>

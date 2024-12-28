@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Nom de l'entreprise -->
+    <EditText
+        android:id="@+id/et_company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom de l'entreprise"
+        android:inputType="text" />
+
+    <!-- Domaine -->
+    <EditText
+        android:id="@+id/et_domaine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Domaine"
+        android:inputType="text" />
+
+    <!-- Type -->
+    <EditText
+        android:id="@+id/et_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type"
+        android:inputType="text" />
+
+    <!-- Durée -->
+    <EditText
+        android:id="@+id/et_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Durée de stage"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/et_duration1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date de début"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/et_profil_rechercher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Profils Recherchés"
+        android:inputType="text" />
+</LinearLayout>

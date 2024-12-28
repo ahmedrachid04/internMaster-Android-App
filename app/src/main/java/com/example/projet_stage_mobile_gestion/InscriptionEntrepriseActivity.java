@@ -19,7 +19,9 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
     EditText editTextAdresse;
     EditText editTextEmail;
     EditText editTextTelephone;
-
+    EditText editTextPassword;
+    EditText editTextConfirmerPassword;
+    Button editTextLogo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,30 +31,33 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
         editTextAdresse = findViewById(R.id.editTextAddress);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextTelephone = findViewById(R.id.editTextPhone);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextConfirmerPassword = findViewById(R.id.editTextConfirmPassword);
+        editTextLogo = findViewById(R.id.buttonUploadLogo);
 
 
 
         // TextView avec des étoiles
         TextView companyTextView = findViewById(R.id.textViewCompany);
-        companyTextView.setText(getColoredText("Nom d'entreprise: *", "*", Color.RED));
+        companyTextView.setText(getColoredText("Nom d'entreprise: ", "", Color.RED));
 
         TextView emailTextView = findViewById(R.id.textViewEmail);
-        emailTextView.setText(getColoredText("Email: *", "*", Color.RED));
+        emailTextView.setText(getColoredText("Email: ", "", Color.RED));
 
         TextView phoneTextView = findViewById(R.id.textViewPhone);
-        phoneTextView.setText(getColoredText("Numéro Téléphone (fax): *", "*", Color.RED));
+        phoneTextView.setText(getColoredText("Numéro Téléphone (fax): ", "", Color.RED));
 
         TextView addressTextView = findViewById(R.id.textViewAddress);
-        addressTextView.setText(getColoredText("Adresse: *", "*", Color.RED));
+        addressTextView.setText(getColoredText("Adresse: ", "", Color.RED));
 
         TextView logoTextView = findViewById(R.id.textViewLogo);
-        logoTextView.setText(getColoredText("Logo: *", "*", Color.RED));
+        logoTextView.setText(getColoredText("Logo: ", "", Color.RED));
 
         TextView passwordTextView = findViewById(R.id.textViewPassword);
-        passwordTextView.setText(getColoredText("Mot de passe: *", "*", Color.RED));
+        passwordTextView.setText(getColoredText("Mot de passe: ", "", Color.RED));
 
         TextView confirmPasswordTextView = findViewById(R.id.textViewConfirmPassword);
-        confirmPasswordTextView.setText(getColoredText("Confirmer Mot de passe: *", "*", Color.RED));
+        confirmPasswordTextView.setText(getColoredText("Confirmer Mot de passe: ", "", Color.RED));
 
         // Lier le bouton "Continuer" avec son ID
         Button buttonContinuer = findViewById(R.id.buttonSubmit);
@@ -66,6 +71,8 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
                 String userTextEmail = editTextEmail.getText().toString();
                 String userTextTelephone = editTextTelephone.getText().toString();
                 String userTextAdresse = editTextAdresse.getText().toString();
+                String userTextPassword = editTextPassword.getText().toString();
+                String userTextConfirmerPassword = editTextConfirmerPassword.getText().toString();
 
                 // Créer un Intent pour lancer l'Activity PopupEntreprise
                 Intent intent = new Intent(InscriptionEntrepriseActivity.this, ConfirmerEntrepriseActivity.class);
@@ -75,6 +82,8 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
                 intent.putExtra("TEXT_KEY_Email", userTextEmail);
                 intent.putExtra("TEXT_KEY_Telephone", userTextTelephone);
                 intent.putExtra("TEXT_KEY_Adresse", userTextAdresse);
+                intent.putExtra("TEXT_KEY_Password", userTextPassword);
+                intent.putExtra("TEXT_KEY_ConfirmerPassword", userTextConfirmerPassword);
 
                 startActivity(intent);
             }

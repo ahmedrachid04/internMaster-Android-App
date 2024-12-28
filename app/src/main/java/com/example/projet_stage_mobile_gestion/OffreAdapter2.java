@@ -12,11 +12,11 @@ import com.example.projet_stage_mobile_gestion.DataBase.Models.OfferModel;
 
 import java.util.List;
 
-public class OffreAdapter extends RecyclerView.Adapter<OffreAdapter.OffreViewHolder> {
+public class OffreAdapter2 extends RecyclerView.Adapter<OffreAdapter2.OffreViewHolder> {
 
     private List<OfferModel> offerList;
 
-    public OffreAdapter(List<OfferModel> offerList) {
+    public OffreAdapter2(List<OfferModel> offerList) {
         this.offerList = offerList;
     }
 
@@ -24,7 +24,7 @@ public class OffreAdapter extends RecyclerView.Adapter<OffreAdapter.OffreViewHol
     @Override
     public OffreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate the layout for each offer item
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.acceuilstagiaire2, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.acceuilentreprise2, parent, false);
         return new OffreViewHolder(view);
     }
 
@@ -70,4 +70,5 @@ public class OffreAdapter extends RecyclerView.Adapter<OffreAdapter.OffreViewHol
     }
 
 }
+
 

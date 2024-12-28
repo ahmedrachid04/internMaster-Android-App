@@ -3,12 +3,29 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
+    <!-- TextView pour afficher "Intern Master" -->
+
     <!-- ImageView pour afficher le profil de l'utilisateur -->
+
+    <TextView
+        android:id="@+id/textView_intern_master"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="38dp"
+        android:text="Intern Master"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/imageView_profil"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:layout_margin="16dp"
         android:src="@drawable/ic_profile"
         android:contentDescription="@string/profile_image_desc"

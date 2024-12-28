@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Projet_stage_mobile_gestion"
         tools:targetApi="31">
         <activity
-        android:name=".StatistiqueActivity"
+        android:name=".AcceuilEntrepriseActivity"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -56,7 +56,10 @@
         <activity
             android:name=".ProfilStagiaireActivity"
             android:exported="true" />
-        <activity android:name=".AcceuilStagiaireActivity" android:exported="true" />
+
+
+
+
     </application>
 
 </manifest>

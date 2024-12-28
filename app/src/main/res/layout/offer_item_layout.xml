@@ -5,7 +5,6 @@
     android:layout_marginBottom="20dp"
     android:background="#EFEFEF">
 
-    <!-- Nom Entreprise -->
     <TextView
         android:id="@+id/nom_entreprise"
         android:layout_width="wrap_content"
@@ -16,7 +15,6 @@
         android:textStyle="bold"
         android:textColor="#003a9b" />
 
-    <!-- Domaine -->
     <TextView
         android:id="@+id/textView_domaine"
         android:layout_width="wrap_content"
@@ -26,7 +24,6 @@
         android:text="Domaine"
         android:textColor="#000000" />
 
-    <!-- Type -->
     <TextView
         android:id="@+id/textView_type"
         android:layout_width="wrap_content"
@@ -36,7 +33,6 @@
         android:text="Type"
         android:textColor="#000000" />
 
-    <!-- Durée -->
     <TextView
         android:id="@+id/textView_duration"
         android:layout_width="wrap_content"
@@ -45,19 +41,13 @@
         android:layout_marginTop="10dp"
         android:text="Durée"
         android:textColor="#000000" />
-
-    <!-- Plus de détails -->
     <TextView
-        android:id="@+id/textView_moreDetails"
+        android:id="@+id/textView_profil_rechercher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView_duration"
+        android:layout_below="@id/textView_type"
         android:layout_marginTop="10dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="Plus de détails"
-        android:textColor="#003a9b"
-        android:textStyle="bold" />
+        android:text="Profil"
+        android:textColor="#000000" />
+
 </RelativeLayout>

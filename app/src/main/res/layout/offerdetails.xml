@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <!-- CardView pour afficher les informations de l'offre dans un cadre -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="100dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        android:padding="16dp"
+        app:contentPadding="16dp">
+
+
+    <!-- LinearLayout pour organiser les TextView verticalement -->
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:padding="16dp"
+android:gravity="start">
+
+<!-- Titre de l'offre -->
+<TextView
+    android:id="@+id/titleTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Title"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f1f1f1"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Description de l'offre -->
+<TextView
+    android:id="@+id/descriptionTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Description"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f9f9f9"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Type de l'offre -->
+<TextView
+    android:id="@+id/typeTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Type"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f1f1f1"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Domaine de l'offre -->
+<TextView
+    android:id="@+id/domaineTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Domaine"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f9f9f9"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Durée de l'offre -->
+<TextView
+    android:id="@+id/durationTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Duration"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f1f1f1"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Date de début de l'offre -->
+<TextView
+    android:id="@+id/startDateTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Start Date"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f9f9f9"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Date de fin de l'offre -->
+<TextView
+    android:id="@+id/endDateTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="End Date"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f1f1f1"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Date de publication de l'offre -->
+<TextView
+    android:id="@+id/postDateTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Post Date"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f9f9f9"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+
+<!-- Nom de l'entreprise -->
+<TextView
+    android:id="@+id/companyNameTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Company Name"
+    android:textSize="14sp"
+    android:textColor="#333333"
+    android:layout_marginBottom="8dp"
+    android:background="#f1f1f1"
+    android:padding="8dp"
+    android:layout_gravity="start"/>
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- ImageView pour la flèche de retour en arrière (à gauche) -->
+<ImageView
+android:id="@+id/backArrowImageView"
+android:layout_width="48dp"
+android:layout_height="48dp"
+android:layout_alignParentBottom="true"
+android:layout_alignParentStart="true"
+android:src="@drawable/ic_back"
+android:contentDescription="Retour"
+android:padding="8dp"
+android:layout_marginBottom="16dp"
+android:clickable="true"
+android:focusable="true"/>
+
+    <!-- Button pour "Postuler" (à droite) -->
+<Button
+android:id="@+id/applyButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Postuler"
+android:textSize="16sp"
+android:textColor="#ffffff"
+android:background="@color/Dark_blue"
+android:layout_alignParentBottom="true"
+android:layout_alignParentEnd="true"
+android:layout_marginBottom="16dp"
+android:layout_marginEnd="16dp"
+android:clickable="true"
+android:focusable="true"/>
+    </RelativeLayout>

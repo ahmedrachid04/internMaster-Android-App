@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Toolbar avec "Intern Master" à gauche et icône de menu à droite -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0038A7"
+        android:elevation="4dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/textView_intern_master"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="InternMaster"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="start|center_vertical"
+            android:layout_alignParentStart="true"/>
+
+        <ImageView
+            android:id="@+id/imageView_menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_menu"
+            android:contentDescription="menu_icon_desc"
+            android:clickable="true"
+            android:focusable="true" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Bouton + pour ajouter une offre -->
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/fab_add_offer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_add"
+        android:contentDescription="Add Offer"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:padding="12dp" />
+
+    <!-- Formulaire de saisie caché initialement -->
+    <LinearLayout
+        android:id="@+id/formLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_company_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom de l'entreprise"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et_domaine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Domaine"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/et_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Durée"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/et_duration1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date Debut"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/et_duration2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Date Fin"
+            android:inputType="text" />
+        <EditText
+            android:id="@+id/et_profil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Profils Recherchés"
+            android:inputType="text" />
+
+        <!-- Bouton de soumission -->
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0038A7"
+            android:text="Soumettre" />
+    </LinearLayout>
+
+    <!-- RecyclerView pour afficher les offres -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_offres"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:padding="10dp" />
+
+</RelativeLayout>
