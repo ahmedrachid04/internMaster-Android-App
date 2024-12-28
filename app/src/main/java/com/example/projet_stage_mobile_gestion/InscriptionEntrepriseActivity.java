@@ -87,6 +87,17 @@ public class InscriptionEntrepriseActivity extends AppCompatActivity {
                 String userTextAdresse = editTextAdresse.getText().toString();
                 String userTextPassword = editTextPassword.getText().toString();
                 String userTextConfirmerPassword = editTextConfirmerPassword.getText().toString();
+                if (userTextEmail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(userTextEmail).matches()) {
+                    editTextEmail.setError("Invalid email format");
+                }
+                if (userTextTelephone.isEmpty() || !userTextTelephone.matches("^[0-9]{10}$")) {
+                    editTextTelephone.setError("Invalid phone number format");
+                }
+                if (!userTextConfirmerPassword.matches(userTextPassword)){editTextConfirmerPassword.setError("Passwords do not match");}
+                if(userTextEmail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(userTextEmail).matches() || userTextTelephone.isEmpty() || !userTextTelephone.matches("^[0-9]{10}$") || !userTextConfirmerPassword.matches(userTextPassword) || userTextConfirmerPassword.isEmpty() || userTextPassword.isEmpty() ){
+                    Toast.makeText(InscriptionEntrepriseActivity.this, "Veuillez remplir too les champs", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Créer un Intent pour lancer l'Activity PopupEntreprise
                 Intent intent = new Intent(InscriptionEntrepriseActivity.this, ConfirmerEntrepriseActivity.class);

@@ -8,6 +8,9 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projet_stage_mobile_gestion.DataBase.Models.CompanyModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
+
 public class ConfirmerEntrepriseActivity extends AppCompatActivity {
 
     // Pour afficher le texte reçu
@@ -27,6 +30,8 @@ public class ConfirmerEntrepriseActivity extends AppCompatActivity {
         textViewEmail = findViewById(R.id.popup_emailEnt);
         textViewTelephone = findViewById(R.id.popup_teleEnt);
         textViewAdresse = findViewById(R.id.popup_adresseEnt);
+        //Creer helper pour presister les data
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
         // Récupérer le texte depuis l'Intent
         String receivedTextNom = getIntent().getStringExtra("TEXT_KEY_Nom");
         String receivedTextEmail = getIntent().getStringExtra("TEXT_KEY_Email");
@@ -60,6 +65,11 @@ public class ConfirmerEntrepriseActivity extends AppCompatActivity {
         buttonConfirmer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Presister les data
+                CompanyModel company=new CompanyModel(receivedTextNom, receivedTextAdresse, receivedTextEmail, receivedTextTelephone, "no fax yet", "no description yet", null, receivedTextPassword);
+                helper.addCompany(company);
+                CompanyModel createdComp;
+
                 // Créer un Intent pour lancer l'Activity InscriptionEntreprise
                 Intent intent = new Intent(ConfirmerEntrepriseActivity.this, ProfilEntrepriseActivity.class);
                 startActivity(intent);
