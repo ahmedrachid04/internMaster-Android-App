@@ -55,7 +55,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:visibility="gone">
+        android:background="#B3C7F0"
+        android:visibility="gone"
+        android:layout_below="@+id/toolbar">
 
         <EditText
             android:id="@+id/et_title"

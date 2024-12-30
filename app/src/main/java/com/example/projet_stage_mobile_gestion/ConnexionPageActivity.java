@@ -52,7 +52,7 @@ public class ConnexionPageActivity extends AppCompatActivity {
                 String password = editPassword.getText().toString().trim();
 
                 // Validation des champs
-                if(email=="admin@mail.com"&&password=="admin")startActivity(new Intent(ConnexionPageActivity.this, StatistiqueActivity.class));
+                if(email.matches("admin@mail.com")&&password.matches("admin"))startActivity(new Intent(ConnexionPageActivity.this, StatistiqueActivity.class));
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(ConnexionPageActivity.this, "Veuillez entrer votre adresse email", Toast.LENGTH_SHORT).show();
                 } else if (TextUtils.isEmpty(password)) {

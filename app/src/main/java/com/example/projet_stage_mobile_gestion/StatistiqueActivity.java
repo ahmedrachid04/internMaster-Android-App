@@ -3,8 +3,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
 
 public class StatistiqueActivity extends AppCompatActivity {
 
@@ -12,6 +17,15 @@ public class StatistiqueActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistique);
+        TextView users=findViewById(R.id.tvUsersCount);
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
+        users.setText(String.valueOf(helper.countAll()));
+
+        TextView interns=findViewById(R.id.tvInternsCount);
+        interns.setText(String.valueOf(helper.countStudents()));
+
+        TextView companies=findViewById(R.id.tvCompaniesCount);
+        companies.setText(String.valueOf(helper.countCompanies()));
 
         // Initialisation du toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);

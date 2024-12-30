@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet_stage_mobile_gestion.DataBase.Models.CompanyModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class CompanyListActivity extends AppCompatActivity implements CompanyAda
         setContentView(R.layout.activity_company_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
 
         // Initialisation de la toolbar
         setSupportActionBar(findViewById(R.id.toolbar));
@@ -60,10 +62,7 @@ public class CompanyListActivity extends AppCompatActivity implements CompanyAda
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Liste d'entreprises (données factices)
-        companyList = new ArrayList<>();
-        companyList.add(new CompanyModel(1, "Entreprise A", "Adresse A", "emailA@example.com", "0123456789", "", "Description A", null, ""));
-        companyList.add(new CompanyModel(2, "Entreprise B", "Adresse B", "emailB@example.com", "9876543210", "", "Description B", null, ""));
-        companyList.add(new CompanyModel(3, "Entreprise C", "Adresse C", "emailC@example.com", "5555555555", "", "Description C", null, ""));
+        companyList = helper.getAllCompanies();
 
         adapter = new CompanyAdapter(this, companyList, this);
         recyclerView.setAdapter(adapter);

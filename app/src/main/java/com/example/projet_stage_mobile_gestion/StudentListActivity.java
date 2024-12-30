@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projet_stage_mobile_gestion.DataBase.Models.CompanyModel;
 import com.example.projet_stage_mobile_gestion.DataBase.Models.StudentModel;
+import com.example.projet_stage_mobile_gestion.SQLiteFiles.InternshipDataBaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,8 @@ public class StudentListActivity extends AppCompatActivity implements StudentAda
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        InternshipDataBaseHelper helper=new InternshipDataBaseHelper(this);
+
         // Initialisation de la toolbar
         setSupportActionBar(findViewById(R.id.toolbar));
 
@@ -61,10 +64,7 @@ public class StudentListActivity extends AppCompatActivity implements StudentAda
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Liste d'entreprises (données factices)
-        studentList = new ArrayList<>();
-        studentList.add(new StudentModel(1, "John", "Doe", "emailA@example.com", "0123456789", "Computer Science", null, "MIT", "password123"));
-        studentList.add(new StudentModel(2, "Jane", "Smith", "emailB@example.com", "9876543210", "Electrical Engineering", null, "Stanford", "password456"));
-        studentList.add(new StudentModel(3, "Alice", "Brown", "emailC@example.com", "5555555555", "Mechanical Engineering", null, "Harvard", "password789"));
+        studentList = helper.getAllStudents();
 
         adapter = new StudentAdapter(this, studentList, this);
 
