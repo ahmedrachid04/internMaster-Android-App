@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +35,9 @@ public class ListCandidatActivity extends AppCompatActivity {
         // RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        TextView title=findViewById(R.id.subtitle);
+        title.setText(helper.getOffersById(offerId).getTitle());
 
         // Example Data from Backend
         Date currentDate=new Date();
