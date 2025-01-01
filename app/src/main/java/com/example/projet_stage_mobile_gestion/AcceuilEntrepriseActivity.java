@@ -143,7 +143,12 @@ public class AcceuilEntrepriseActivity extends AppCompatActivity {
                 intent.putExtra("COMP_ID", currentCompId);
                 startActivity(intent);
                 return true;
-            } else {
+            }else if (item.getItemId() == R.id.DéconnexionEntreprise) {
+                Intent intent = new Intent(AcceuilEntrepriseActivity.this, MainActivity.class);
+                intent.putExtra("COMP_ID", currentCompId);
+                startActivity(intent);
+                return true;
+            }  else {
                 Intent intent = new Intent(AcceuilEntrepriseActivity.this, AcceuilEntrepriseActivity.class);
                 intent.putExtra("COMP_ID", currentCompId);
                 startActivity(intent);

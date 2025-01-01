@@ -63,7 +63,14 @@ public class ProfilStagiaireActivity extends AppCompatActivity {
                 intent.putExtra("STUD_ID", currentStudentId);
                 startActivity(intent);
                 return true;
-            }  else {
+            }
+            else if (item.getItemId() == R.id.DéconnexionStagiaire) {
+                Intent intent=new Intent(ProfilStagiaireActivity.this, MainActivity.class);
+                intent.putExtra("STUD_ID", currentStudentId);
+                startActivity(intent);
+                return true;
+            }
+            else {
                 Intent intent=new Intent(ProfilStagiaireActivity.this, AcceuilStagiaireActivity.class);
                 intent.putExtra("STUD_ID",currentStudentId);
                 startActivity(intent);

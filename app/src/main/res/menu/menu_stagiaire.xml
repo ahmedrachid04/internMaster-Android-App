@@ -11,7 +11,11 @@
         android:title="Acceuil"
         android:icon="@drawable/ic_user"
         android:showAsAction="ifRoom" />
-
+    <item
+        android:id="@+id/DéconnexionStagiaire"
+        android:title="Déconnexion"
+        android:icon="@drawable/ic_user"
+        android:showAsAction="ifRoom" />
 
 
 

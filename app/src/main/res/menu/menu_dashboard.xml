@@ -15,6 +15,10 @@
         android:icon="@drawable/etudiant"
         android:showAsAction="ifRoom" />
 
-    <!-- Nouveau bouton Ajouter -->
+    <item
+        android:id="@+id/Déconnexion"
+        android:title="Déconnexion"
+        android:icon="@drawable/ic_user"
+        android:showAsAction="ifRoom" />
 
 </menu>

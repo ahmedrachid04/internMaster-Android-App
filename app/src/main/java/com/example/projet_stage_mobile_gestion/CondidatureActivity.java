@@ -65,6 +65,12 @@ public class CondidatureActivity extends AppCompatActivity {
                 intent.putExtra("COMP_ID",currentCompId);
                 startActivity(intent);
                 return true;
+            }
+            else if (item.getItemId() == R.id.DéconnexionEntreprise) {
+                Intent intent=new Intent(CondidatureActivity.this, MainActivity.class);
+                intent.putExtra("COMP_ID",currentCompId);
+                startActivity(intent);
+                return true;
             } else {
                 Intent intent=new Intent(CondidatureActivity.this, AcceuilEntrepriseActivity.class);
                 intent.putExtra("COMP_ID",currentCompId);

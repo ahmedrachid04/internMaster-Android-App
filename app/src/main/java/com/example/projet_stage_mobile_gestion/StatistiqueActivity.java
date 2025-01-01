@@ -51,8 +51,13 @@ public class StatistiqueActivity extends AppCompatActivity {
             Intent intent = new Intent(StatistiqueActivity.this, CompanyListActivity.class);
             startActivity(intent);
             return true;
-        } else if (id == R.id.nav_stagiaires) {
-            // Action pour "Liste des Stagiaires"
+        }else if (id == R.id.nav_stagiaires) {
+            Intent intent = new Intent(StatistiqueActivity.this, StatistiqueActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.Déconnexion) {
+            Intent intent = new Intent(StatistiqueActivity.this, MainActivity.class);
+            startActivity(intent);
             return true;
         }
 

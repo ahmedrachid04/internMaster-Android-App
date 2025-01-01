@@ -15,9 +15,10 @@
         android:title="Acceuil"
         android:icon="@drawable/ic_user"
         android:showAsAction="ifRoom" />
-
-
-
-
+    <item
+        android:id="@+id/DéconnexionEntreprise"
+        android:title="Déconnexion"
+        android:icon="@drawable/ic_user"
+        android:showAsAction="ifRoom" />
 
 </menu>

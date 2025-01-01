@@ -42,8 +42,8 @@ public class CompanyListActivity extends AppCompatActivity implements CompanyAda
             startActivity(new Intent(this, StudentListActivity.class));
             return true;
         } else {
-            return super.onOptionsItemSelected(item); // Ajoutez cette ligne pour gérer d'autres éléments ou retourner false
-        }
+            startActivity(new Intent(this, MainActivity.class));
+            return true;}
     }
 
 
